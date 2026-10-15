@@ -26,6 +26,7 @@ const DEFAULTS = {
   seed: 'vuesax',
   token: process.env.HEATMAP_TOKEN || process.env.GITHUB_TOKEN || '',
   requireData: false,
+  animate: true,
 };
 
 const STRINGS = {
@@ -44,11 +45,11 @@ const STRINGS = {
 // ── the component's design tokens, resolved for each page background ─────────
 const THEMES = {
   dark: {
-    name: 'dark', card: '#0a0a0a', border: 'rgba(255,255,255,.09)',
+    name: 'dark', card: '#0a0a0a', bg: '#000000', border: 'rgba(255,255,255,.09)',
     text: '#ededed', secondary: '#a1a1a1', muted: '#666666', ink: '255 255 255',
   },
   light: {
-    name: 'light', card: '#ffffff', border: 'rgba(0,0,0,.09)',
+    name: 'light', card: '#ffffff', bg: '#ffffff', border: 'rgba(0,0,0,.09)',
     text: '#0b0b0b', secondary: '#5f5f5f', muted: '#8a8a8a', ink: '0 0 0',
   },
 };
@@ -186,13 +187,47 @@ function render(opts, counts, theme) {
 
   p(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(`${nf.format(total)} ${cap}`)}">`);
   p(`<title>${esc(`${nf.format(total)} ${cap}`)}</title>`);
-  p(`<style>text{font-family:${FONT};}</style>`);
+
+  // The component's motion, rebuilt in CSS the SVG carries itself. A README
+  // strips <script> and never forwards a pointer, so hover, click and keyboard
+  // cannot survive the trip — but animation inside an image does, and these are
+  // the three the component plays on its own: the grid cascading in week by
+  // week, the total counting up, and `demo` walking the tooltip over the
+  // busiest days. Nothing here depends on CSS running: every element already
+  // sits in its final state, and the animations only take it away and bring it
+  // back.
+  const CASCADE = { cell: 520, perWeek: 16, perRow: 22 };
+  const COUNT_MS = 900;
+  const TOUR_STOP_MS = 1500;
+  const tourStart = weeks * CASCADE.perWeek + 6 * CASCADE.perRow + CASCADE.cell - 400;
+  const anim = [];
+  if (opts.animate) {
+    anim.push(
+      `@keyframes vs-cell{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}`,
+      `@keyframes vs-on{from{opacity:1}to{opacity:1}}`,
+      `@keyframes vs-reveal{0%,98%{opacity:0}100%{opacity:1}}`,
+      `.c{transform-box:fill-box;transform-origin:50% 50%;animation:vs-cell ${CASCADE.cell}ms cubic-bezier(.34,1.56,.64,1) both}`,
+      `.n{opacity:0;animation:vs-on linear}`,
+      `.nf{animation:vs-reveal ${COUNT_MS}ms linear both}`
+    );
+  }
+  p(`<style>text{font-family:${FONT};}__ANIM__</style>`);
 
   // the card: a hairline panel, no drop shadow — the component's light-theme rule
   p(`<rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="17.5" fill="${theme.card}" stroke="${theme.border}"/>`);
 
   // head — the running total, what it counts, and the two streaks
-  p(`<text x="${PAD_X}" y="${PAD_T + 17}" fill="${theme.text}" font-size="22" font-weight="650" letter-spacing="-.44">${esc(nf.format(total))}</text>`);
+  const totalAt = (y2) => `<text x="${PAD_X}" y="${PAD_T + 17}" fill="${theme.text}" font-size="22" font-weight="650" letter-spacing="-.44"`;
+  if (!opts.animate) {
+    p(`${totalAt()} >${esc(nf.format(total))}</text>`);
+  } else {
+    const FRAMES = 24, step = COUNT_MS / FRAMES;
+    for (let i = 0; i < FRAMES; i++) {
+      const e = 1 - Math.pow(1 - i / FRAMES, 3);
+      p(`${totalAt()} class="n" style="animation-duration:${step.toFixed(1)}ms;animation-delay:${(i * step).toFixed(1)}ms">${esc(nf.format(Math.round(total * e)))}</text>`);
+    }
+    p(`${totalAt()} class="nf">${esc(nf.format(total))}</text>`);
+  }
   p(`<text x="${PAD_X}" y="${PAD_T + 22 + 6 + 10}" fill="${theme.secondary}" font-size="12">${esc(cap)}</text>`);
   const statTop = PAD_T + HEAD_H - 31;
   const stat = (x, value, label) => {
@@ -236,7 +271,8 @@ function render(opts, counts, theme) {
     const x = gridX + c.w * (C + G);
     const y = gridY + c.d * (C + G);
     const fill = c.l === 0 ? theme.text : `rgb(${ink})`;
-    p(`<rect x="${x}" y="${y}" width="${C}" height="${C}" rx="${r}" fill="${fill}" fill-opacity="${ALPHA[c.l]}"/>`);
+    const delay = opts.animate ? ` class="c" style="animation-delay:${c.w * CASCADE.perWeek + c.d * CASCADE.perRow}ms"` : '';
+    p(`<rect x="${x}" y="${y}" width="${C}" height="${C}" rx="${r}" fill="${fill}" fill-opacity="${ALPHA[c.l]}"${delay}/>`);
     if (c.iso === todayISO) {
       const inset = C * 0.28;
       p(`<circle cx="${x + C / 2}" cy="${y + C / 2}" r="${+((C - inset * 2) / 2).toFixed(2)}" fill="${theme.card}" fill-opacity=".85"/>`);
@@ -260,8 +296,73 @@ function render(opts, counts, theme) {
   }
   p(`<text x="${W - PAD_X}" y="${legendMidY}" fill="${theme.muted}" font-size="11" text-anchor="end" dominant-baseline="central">${esc(t.more)}</text>`);
 
+
+  // ── `demo`: the tooltip tours the busiest days, and the day under it lifts ──
+  // The component picks among the days at level 3 and up every 1500ms. Here the
+  // stops are fixed and spread across the window, so the loop reads as a walk
+  // through the half year rather than a jitter in one corner.
+  if (opts.animate) {
+    const hot = live.filter((c) => c.l >= 3);
+    const stops = [];
+    const WANT = Math.min(5, hot.length);
+    for (let i = 0; i < WANT; i++) {
+      const slice = hot.filter((c) => c.w >= (i * weeks) / WANT && c.w < ((i + 1) * weeks) / WANT);
+      const pick = (slice.length ? slice : hot).reduce((a, c) => (c.count > (a?.count ?? -1) ? c : a), null);
+      if (pick && !stops.includes(pick)) stops.push(pick);
+    }
+    if (stops.length) {
+      const T = stops.length * TOUR_STOP_MS;
+      const pct = (ms) => ((ms / T) * 100).toFixed(3);
+      stops.forEach((c, k) => {
+        const cx = gridX + c.w * (C + G) + C / 2;
+        const cy = gridY + c.d * (C + G) + C / 2;
+
+        // the tooltip, sized to its own text
+        const headText = `${nf.format(c.count)} ${unit}`;
+        const tailText = ` · ${c.label}`;
+        const tw = estW(headText, 11.5) * 1.05 + estW(tailText, 11.5) + 18;
+        const th = 6 + Math.round(11.5 * 1.2) + 6;
+        const tx = clamp(cx - tw / 2, PAD_X - 6, W - PAD_X - tw + 6);
+        const ty = cy - C / 2 - th - 9;
+        const ax = clamp(cx - tx, 10, tw - 10);
+
+        // the lift: the component scales the day to 1.4 and rings it twice
+        const hs = C * 1.4, hx = cx - hs / 2, hy = cy - hs / 2;
+        const ringFill = c.l === 0 ? theme.text : `rgb(${ink})`;
+
+        const prev = stops[(k - 1 + stops.length) % stops.length];
+        const dx = (gridX + prev.w * (C + G) + C / 2 - cx) * 0.35;
+        const dy = (gridY + prev.d * (C + G) + C / 2 - cy) * 0.35;
+
+        const s0 = pct(k * TOUR_STOP_MS);
+        const s1 = pct(k * TOUR_STOP_MS + 320);
+        const s2 = pct((k + 1) * TOUR_STOP_MS - 200);
+        const s3 = pct((k + 1) * TOUR_STOP_MS - 40);
+        anim.push(
+          `@keyframes vs-stop${k}{0%,${s0}%{opacity:0;transform:translate(${dx.toFixed(1)}px,${dy.toFixed(1)}px)}` +
+          `${s1}%{opacity:1;transform:translate(0,0)}${s2}%{opacity:1;transform:translate(0,0)}` +
+          `${s3}%,100%{opacity:0;transform:translate(0,0)}}`,
+          `.s${k}{opacity:0;animation:vs-stop${k} ${T}ms cubic-bezier(.34,1.56,.64,1) ${tourStart}ms infinite both}`
+        );
+
+        p(`<g class="s${k}">`);
+        p(`<rect x="${hx.toFixed(2)}" y="${hy.toFixed(2)}" width="${hs.toFixed(2)}" height="${hs.toFixed(2)}" rx="${(r * 1.4).toFixed(2)}" fill="${ringFill}" fill-opacity="${ALPHA[c.l]}"/>`);
+        p(`<rect x="${hx.toFixed(2)}" y="${hy.toFixed(2)}" width="${hs.toFixed(2)}" height="${hs.toFixed(2)}" rx="${(r * 1.4).toFixed(2)}" fill="none" stroke="${theme.card}" stroke-width="3"/>`);
+        p(`<rect x="${(hx - 2.25).toFixed(2)}" y="${(hy - 2.25).toFixed(2)}" width="${(hs + 4.5).toFixed(2)}" height="${(hs + 4.5).toFixed(2)}" rx="${(r * 1.4 + 2.25).toFixed(2)}" fill="none" stroke="rgb(${ink})" stroke-opacity=".9" stroke-width="1.5"/>`);
+        p(`<path d="M${(tx + ax - 4).toFixed(2)} ${(ty + th - 1).toFixed(2)}h8l-4 5z" fill="${theme.text}"/>`);
+        p(`<rect x="${tx.toFixed(2)}" y="${ty.toFixed(2)}" width="${tw.toFixed(2)}" height="${th}" rx="9" fill="${theme.text}"/>`);
+        p(`<text x="${(tx + 9).toFixed(2)}" y="${(ty + th / 2).toFixed(2)}" font-size="11.5" fill="${theme.bg}" dominant-baseline="central"><tspan font-weight="650">${esc(headText)}</tspan>${esc(tailText)}</text>`);
+        p(`</g>`);
+      });
+    }
+  }
+
+  // Someone who asked for less movement gets the card, standing still.
+  if (opts.animate) anim.push('@media (prefers-reduced-motion:reduce){*{animation:none!important}.n{display:none}.nf,[class^="s"]{opacity:1}}');
+
   p('</svg>');
-  return { svg: o.join('\n') + '\n', stats: { total, longest, current, max, top } };
+  const svg = o.join('\n').replace('__ANIM__', opts.animate ? anim.join('') : '') + '\n';
+  return { svg, stats: { total, longest, current, max, top } };
 }
 
 // ── the calendar, from GitHub ────────────────────────────────────────────────
@@ -286,7 +387,7 @@ async function fetchCalendar(login, token, from, to) {
 }
 
 function parseArgs(argv) {
-  const o = { ...DEFAULTS };
+  const o = { ...DEFAULTS, noAnimate: false };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (!a.startsWith('--')) continue;
@@ -295,6 +396,7 @@ function parseArgs(argv) {
     const val = eq === -1 ? argv[++i] : a.slice(eq + 1);
     if (!(key in o)) throw new Error(`Unbekannte Option --${a.slice(2)}`);
     if (key === 'requireData') { o[key] = true; if (eq === -1) i--; continue; }
+    if (key === 'noAnimate') { o.animate = false; if (eq === -1) i--; continue; }
     o[key] = key === 'weeks' ? clamp(parseInt(val, 10) || 26, 4, 53) : val;
   }
   return o;
