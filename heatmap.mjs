@@ -27,6 +27,7 @@ const DEFAULTS = {
   token: process.env.HEATMAP_TOKEN || process.env.GITHUB_TOKEN || '',
   requireData: false,
   animate: true,
+  json: '',
 };
 
 const STRINGS = {
@@ -441,9 +442,27 @@ async function main() {
   }
   await mkdir(opts.out, { recursive: true });
   for (const [theme, r] of drawn) await writeFile(`${opts.out}/heatmap-${theme.name}.svg`, r.svg);
+
+  // The live page feeds the real component the same window these SVGs drew, so
+  // the two cards never disagree about a day. Only ever real counts: with the
+  // seeded series there is nothing honest to write.
+  if (opts.json && opts.token) {
+    const dir = opts.json.replace(/\/[^/]*$/, '');
+    if (dir && dir !== opts.json) await mkdir(dir, { recursive: true });
+    const days = {};
+    for (let i = 0; i <= dayDiff(start, end); i++) {
+      const iso = toISO(addDays(start, i));
+      days[iso] = counts[iso] ?? 0;
+    }
+    await writeFile(opts.json, JSON.stringify({
+      login: opts.login, weeks: opts.weeks, end: toISO(end),
+      unit: opts.unit, total: stats.total, generated: new Date().toISOString(), days,
+    }, null, 1) + '\n');
+  }
   console.log(
     `${opts.out}/heatmap-{dark,light}.svg · ${stats.total} ${opts.unit}, ` +
-    `Spitze ${stats.max} am ${stats.top?.iso ?? '–'}, Serie ${stats.longest} lang, aktuell ${stats.current}`
+    `Spitze ${stats.max} am ${stats.top?.iso ?? '–'}, Serie ${stats.longest} lang, aktuell ${stats.current}` +
+    (opts.json && opts.token ? ` · ${opts.json}` : '')
   );
 }
 

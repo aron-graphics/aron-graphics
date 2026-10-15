@@ -33,16 +33,16 @@ jobs:
         env:
           HEATMAP_TOKEN: ${{ secrets.HEATMAP_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: node heatmap.mjs --login "${{ github.repository_owner }}" --out assets --require-data
+        run: node heatmap.mjs --login "${{ github.repository_owner }}" --out assets --json docs/contributions.json --require-data
 
       - name: Zurücklegen, falls anders
         run: |
-          if git diff --quiet -- assets; then
+          if git diff --quiet -- assets docs; then
             echo "Die Karte steht schon auf dem heutigen Stand."
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add assets
+          git add assets docs
           git commit -m 'change: Die Heatmap zeigt den heutigen Stand'
           git push
