@@ -49,7 +49,7 @@
     <p>Derselbe Baustein wie auf dem <a href="https://github.com/aron-graphics">Profil</a> — dort als Bild, hier als er selbst.</p>
   </div>
 
-  <vs-calendar-heatmap id="map" weeks="26" unit="contributions" locale="en-US" week-start="mon" demo></vs-calendar-heatmap>
+  <vs-calendar-heatmap id="map" weeks="26" unit="Beiträge" locale="de-DE" week-start="mon" demo></vs-calendar-heatmap>
 
   <p class="hint">
     Zeiger über einen Tag: der Tooltip folgt auf zwei Federn. Klick wählt ihn aus.
@@ -63,14 +63,16 @@
     Die Zahlen stehen in <a href="contributions.json"><code>contributions.json</code></a>, die ein
     <a href="https://github.com/aron-graphics/aron-graphics/blob/main/.github/workflows/heatmap.yml">Workflow</a> jede Nacht erneuert.
     Der Baustein stuft nach dem vollsten Tag ein, die Karte auf dem Profil nach Quartilen — darum liegen dort manche Tage eine Stufe höher.
-    Seine Beschriftungen stehen fest auf Englisch; <code>locale</code> stellt nur Datum und Zahl. Darum steht die Karte hier ganz auf Englisch, statt halb.</p>
+    Seine Beschriftungen stehen fest auf Englisch; <a href="deutsch.js"><code>deutsch.js</code></a> stellt sie um, ohne die Katalogquelle anzufassen.</p>
   </footer>
 </main>
 
 <script type="module">
   import './vs-calendar-heatmap.js';
+  import { aufDeutsch } from './deutsch.js';
 
   const map = document.getElementById('map');
+  aufDeutsch(map);
   try {
     const res = await fetch('contributions.json', { cache: 'no-cache' });
     if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
