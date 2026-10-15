@@ -331,9 +331,10 @@ async function main() {
   const stats = drawn[0][1].stats;
   if (opts.requireData && stats.total === 0) {
     throw new Error(
-      `Null Beiträge für ${opts.login} im ganzen Fenster. Der Token sieht keine privaten Repos: ` +
-      'entweder ein PAT mit read:user als Secret HEATMAP_TOKEN hinterlegen, oder in den ' +
-      'Profileinstellungen "Include private contributions on my profile" einschalten.'
+      `Null Beiträge für ${opts.login} im ganzen Fenster. Meist steht in den ` +
+      'Profileinstellungen "Include private contributions on my profile" auf aus — ohne den ' +
+      'Schalter bleiben private Tage für jeden Token unsichtbar. Sonst ein klassisches PAT ' +
+      'mit read:user als Secret HEATMAP_TOKEN hinterlegen.'
     );
   }
   await mkdir(opts.out, { recursive: true });

@@ -24,8 +24,11 @@ jobs:
         with:
           node-version: '22'
 
-      # HEATMAP_TOKEN ist ein PAT mit read:user. Ohne ihn sieht der Lauf nur
-      # öffentliche Beiträge — und bricht ab, statt eine leere Karte zu commiten.
+      # Das eingebaute GITHUB_TOKEN genügt, solange im Profil "Include private
+      # contributions" an ist: die privaten Tage kommen dann als freigegebene
+      # Zählwerte, die jeder Token sieht. HEATMAP_TOKEN ist nur der Notnagel,
+      # falls der Schalter je ausgeht. --require-data bricht lieber ab, als eine
+      # leere oder erfundene Karte zu commiten.
       - name: Rendern
         env:
           HEATMAP_TOKEN: ${{ secrets.HEATMAP_TOKEN }}
