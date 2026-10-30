@@ -1,36 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="480" height="241" viewBox="0 0 480 241" role="img" aria-label="3.154 Beiträge in den letzten 6 Monaten">
-<title>3.154 Beiträge in den letzten 6 Monaten</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="241" viewBox="0 0 480 241" role="img" aria-label="3.160 Beiträge in den letzten 6 Monaten">
+<title>3.160 Beiträge in den letzten 6 Monaten</title>
 <style>text{font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, 'Noto Sans', sans-serif;}@keyframes vs-cell{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}@keyframes vs-on{from{opacity:1}to{opacity:1}}@keyframes vs-reveal{0%,98%{opacity:0}100%{opacity:1}}.c{transform-box:fill-box;transform-origin:50% 50%;animation:vs-cell 520ms cubic-bezier(.34,1.56,.64,1) both}.n{opacity:0;animation:vs-on linear}.nf{animation:vs-reveal 900ms linear both}@keyframes vs-stop0{0%,0.000%{opacity:0;transform:translate(106.4px,5.6px)}4.267%{opacity:1;transform:translate(0,0)}17.333%{opacity:1;transform:translate(0,0)}19.467%,100%{opacity:0;transform:translate(0,0)}}.s0{opacity:0;animation:vs-stop0 7500ms cubic-bezier(.34,1.56,.64,1) 668ms infinite both}@keyframes vs-stop1{0%,20.000%{opacity:0;transform:translate(-16.8px,5.6px)}24.267%{opacity:1;transform:translate(0,0)}37.333%{opacity:1;transform:translate(0,0)}39.467%,100%{opacity:0;transform:translate(0,0)}}.s1{opacity:0;animation:vs-stop1 7500ms cubic-bezier(.34,1.56,.64,1) 668ms infinite both}@keyframes vs-stop2{0%,40.000%{opacity:0;transform:translate(-39.2px,-5.6px)}44.267%{opacity:1;transform:translate(0,0)}57.333%{opacity:1;transform:translate(0,0)}59.467%,100%{opacity:0;transform:translate(0,0)}}.s2{opacity:0;animation:vs-stop2 7500ms cubic-bezier(.34,1.56,.64,1) 668ms infinite both}@keyframes vs-stop3{0%,60.000%{opacity:0;transform:translate(-11.2px,22.4px)}64.267%{opacity:1;transform:translate(0,0)}77.333%{opacity:1;transform:translate(0,0)}79.467%,100%{opacity:0;transform:translate(0,0)}}.s3{opacity:0;animation:vs-stop3 7500ms cubic-bezier(.34,1.56,.64,1) 668ms infinite both}@keyframes vs-stop4{0%,80.000%{opacity:0;transform:translate(-39.2px,-28.0px)}84.267%{opacity:1;transform:translate(0,0)}97.333%{opacity:1;transform:translate(0,0)}99.467%,100%{opacity:0;transform:translate(0,0)}}.s4{opacity:0;animation:vs-stop4 7500ms cubic-bezier(.34,1.56,.64,1) 668ms infinite both}@media (prefers-reduced-motion:reduce){*{animation:none!important}.n{display:none}.nf,[class^="s"]{opacity:1}}</style>
 <rect x=".5" y=".5" width="479" height="240" rx="17.5" fill="#0a0a0a" stroke="rgba(255,255,255,.09)"/>
 <text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:0.0ms">0</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:37.5ms">378</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:75.0ms">725</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:112.5ms">1.041</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:150.0ms">1.329</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:187.5ms">1.589</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:225.0ms">1.823</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:262.5ms">2.033</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:300.0ms">2.219</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:337.5ms">2.384</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:375.0ms">2.528</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:412.5ms">2.653</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:450.0ms">2.760</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:487.5ms">2.850</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:525.0ms">2.926</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:562.5ms">2.988</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:600.0ms">3.037</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:637.5ms">3.076</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:675.0ms">3.105</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:712.5ms">3.125</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:750.0ms">3.139</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:787.5ms">3.148</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:825.0ms">3.152</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:862.5ms">3.154</text>
-<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="nf">3.154</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:37.5ms">379</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:75.0ms">726</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:112.5ms">1.043</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:150.0ms">1.331</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:187.5ms">1.592</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:225.0ms">1.827</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:262.5ms">2.037</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:300.0ms">2.224</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:337.5ms">2.389</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:375.0ms">2.533</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:412.5ms">2.658</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:450.0ms">2.765</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:487.5ms">2.856</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:525.0ms">2.931</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:562.5ms">2.993</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:600.0ms">3.043</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:637.5ms">3.082</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:675.0ms">3.111</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:712.5ms">3.131</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:750.0ms">3.145</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:787.5ms">3.154</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:825.0ms">3.158</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="n" style="animation-duration:37.5ms;animation-delay:862.5ms">3.160</text>
+<text x="16" y="33" fill="#ededed" font-size="22" font-weight="650" letter-spacing="-.44" class="nf">3.160</text>
 <text x="16" y="54" fill="#a1a1a1" font-size="12">Beiträge in den letzten 6 Monaten</text>
-<text x="388.17823999999996" y="38" fill="#ededed" font-size="13" font-weight="600" text-anchor="end">149 Tage</text>
+<text x="388.17823999999996" y="38" fill="#ededed" font-size="13" font-weight="600" text-anchor="end">150 Tage</text>
 <text x="388.17823999999996" y="50" fill="#666666" font-size="11" text-anchor="end">Längste Serie</text>
-<text x="464" y="38" fill="#ededed" font-size="13" font-weight="600" text-anchor="end">149 Tage</text>
+<text x="464" y="38" fill="#ededed" font-size="13" font-weight="600" text-anchor="end">150 Tage</text>
 <text x="464" y="50" fill="#666666" font-size="11" text-anchor="end">Aktuell</text>
 <text x="46" y="83" fill="#666666" font-size="10.5">Mai</text>
 <text x="110" y="83" fill="#666666" font-size="10.5">Jun</text>
@@ -111,14 +111,14 @@
 <rect x="190" y="152" width="13" height="13" rx="3.64" fill="rgb(255 255 255)" fill-opacity="0.4" class="c" style="animation-delay:232ms"/>
 <rect x="190" y="168" width="13" height="13" rx="3.64" fill="rgb(255 255 255)" fill-opacity="0.64" class="c" style="animation-delay:254ms"/>
 <rect x="190" y="184" width="13" height="13" rx="3.64" fill="rgb(255 255 255)" fill-opacity="0.64" class="c" style="animation-delay:276ms"/>
-<rect x="206" y="88" width="13" height="13" rx="3.64" fill="rgb(255 255 255)" fill-opacity="0.4" class="c" style="animation-delay:160ms"/>
+<rect x="206" y="88" width="13" height="13" rx="3.64" fill="rgb(255 255 255)" fill-opacity="0.64" class="c" style="animation-delay:160ms"/>
 <rect x="206" y="104" width="13" height="13" rx="3.64" fill="rgb(255 255 255)" fill-opacity="0.64" class="c" style="animation-delay:182ms"/>
 <rect x="206" y="120" width="13" height="13" rx="3.64" fill="rgb(255 255 255)" fill-opacity="0.64" class="c" style="animation-delay:204ms"/>
 <rect x="206" y="136" width="13" height="13" rx="3.64" fill="rgb(255 255 255)" fill-opacity="0.64" class="c" style="animation-delay:226ms"/>
 <rect x="206" y="152" width="13" height="13" rx="3.64" fill="rgb(255 255 255)" fill-opacity="0.64" class="c" style="animation-delay:248ms"/>
 <rect x="206" y="168" width="13" height="13" rx="3.64" fill="rgb(255 255 255)" fill-opacity="0.64" class="c" style="animation-delay:270ms"/>
 <rect x="206" y="184" width="13" height="13" rx="3.64" fill="rgb(255 255 255)" fill-opacity="0.64" class="c" style="animation-delay:292ms"/>
-<rect x="222" y="88" width="13" height="13" rx="3.64" fill="rgb(255 255 255)" fill-opacity="0.4" class="c" style="animation-delay:176ms"/>
+<rect x="222" y="88" width="13" height="13" rx="3.64" fill="rgb(255 255 255)" fill-opacity="0.64" class="c" style="animation-delay:176ms"/>
 <rect x="222" y="104" width="13" height="13" rx="3.64" fill="rgb(255 255 255)" fill-opacity="0.64" class="c" style="animation-delay:198ms"/>
 <rect x="222" y="120" width="13" height="13" rx="3.64" fill="rgb(255 255 255)" fill-opacity="0.64" class="c" style="animation-delay:220ms"/>
 <rect x="222" y="136" width="13" height="13" rx="3.64" fill="rgb(255 255 255)" fill-opacity="0.95" class="c" style="animation-delay:242ms"/>
@@ -220,7 +220,8 @@
 <rect x="446" y="104" width="13" height="13" rx="3.64" fill="rgb(255 255 255)" fill-opacity="0.2" class="c" style="animation-delay:422ms"/>
 <rect x="446" y="120" width="13" height="13" rx="3.64" fill="rgb(255 255 255)" fill-opacity="0.2" class="c" style="animation-delay:444ms"/>
 <rect x="446" y="136" width="13" height="13" rx="3.64" fill="rgb(255 255 255)" fill-opacity="0.2" class="c" style="animation-delay:466ms"/>
-<circle cx="452.5" cy="142.5" r="2.86" fill="#0a0a0a" fill-opacity=".85"/>
+<rect x="446" y="152" width="13" height="13" rx="3.64" fill="rgb(255 255 255)" fill-opacity="0.2" class="c" style="animation-delay:488ms"/>
+<circle cx="452.5" cy="158.5" r="2.86" fill="#0a0a0a" fill-opacity=".85"/>
 <text x="16" y="223" font-size="12" fill="#a1a1a1">Fleißigster Tag: <tspan fill="#ededed" font-weight="600">Di., 25. Aug.</tspan> · 152</text>
 <text x="351.128" y="219" fill="#666666" font-size="11" text-anchor="end" dominant-baseline="central">Weniger</text>
 <rect x="354.13" y="212.5" width="13" height="13" rx="4" fill="#ededed" fill-opacity="0.08"/>
